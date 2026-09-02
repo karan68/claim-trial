@@ -23,7 +23,7 @@ No one can be 100% certain of winning a judged contest. Adoption, competing entr
 
 - **Public Play:** https://play.modiqo.ai/karan68/claim-trial@0.1.0
 - **Public source:** https://github.com/karan68/claim-trial
-- **Source head:** `486908529e20b0f50e418f3614d7f8f632958d34`
+- **Released code commit:** `486908529e20b0f50e418f3614d7f8f632958d34`
 - **Captured exploration:** `cap_Al0udtXDu754TF3fCVlGbrek`
 - **Captured trajectory:** `sha256:949ea5115148f5c0dfac1f6d38c069cbc0a24b7fcf5011082f0820f459713c2c`
 - **Registry archive digest:** `sha256:d74533b279ae9afdeccdd2d91f35b95af95ad5ccc45211b27092808a4bdeb988`
