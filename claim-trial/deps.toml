@@ -1,0 +1,40 @@
+schema_version = 1
+
+[[tools]]
+id = "python3"
+command = "python3"
+required = true
+
+[[tools.install]]
+manager = "brew"
+package = "python@3"
+
+[[tools.install]]
+manager = "apt"
+package = "python3"
+
+[[tools.install]]
+manager = "system"
+notes = "Python 3.10 or newer; Claim Trial uses only the standard library."
+
+[[tools]]
+id = "git"
+command = "git"
+required = true
+
+[[tools.install]]
+manager = "brew"
+package = "git"
+
+[[tools.install]]
+manager = "apt"
+package = "git"
+
+[[tools]]
+id = "posix-sh"
+command = "sh"
+required = true
+
+[[tools.install]]
+manager = "system"
+notes = "A POSIX shell is required only to run the two explicitly supplied probe commands."
