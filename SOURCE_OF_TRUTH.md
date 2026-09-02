@@ -1,6 +1,6 @@
 # Rote Playoffs: Source of Truth
 
-**Status:** `claim-trial@0.1.0` published and canonical smoke verified
+**Status:** `claim-trial@0.1.0` and `invisible-diff@0.1.0` submitted; adoption outreach active
 **Last verified:** 2026-09-02
 **Event window:** September 1-6, 2026
 **Submission deadline:** September 6, 2026 at 20:00 London / 19:00 UTC / September 7 at 00:30 IST
@@ -42,6 +42,42 @@ Verified release gates:
 - Two adversarial implementation reviews completed; the second found no ship-blocking defect, and its remaining parallel-custom test gap was added and passed.
 
 The public page states that the pinned Play can be resolved and run by anyone. Community registry commands are not shipped in the current CLI, so the event entry uses the available public `karan68` namespace, consistent with other live user-owned entries.
+
+## Second Published Outcome: Invisible Diff
+
+- **Public Play:** https://play.modiqo.ai/karan68/invisible-diff@0.1.0
+- **Public source:** https://github.com/karan68/invisible-diff
+- **GitHub release:** https://github.com/karan68/invisible-diff/releases/tag/v0.1.0
+- **Released source commit:** `5d6ad35e30ba9d64ca485d97ff58d11e3c70eec1`
+- **Registry archive digest:** `sha256:6b9df007b41042323fab7a102930cc7f57658e289a73e0705b361f03c86b4d8e`
+- **Installed package digest:** `installed-package-sha256-v1:053fec9f4a9208cf9d32970930435c3454224e4b841b561fd1f0ba785d1b62be`
+- **Published:** 2026-09-02 at 17:13:26 UTC
+
+Verified release gates:
+
+- 23 focused engine and temporary-Git integration tests pass.
+- Rote validation passes with quality score `0.88`; fixture-backed presentation lint passes.
+- The eight-stage zero-argument demo returns `BLOCK`: one block, four reviews, complete coverage, and unchanged source.
+- The three analyzers fan out from one bounded, compressed, SHA-256-verified changed-line snapshot and never reread the repository.
+- Staged, working-tree, and exact-range modes read raw files, index objects, or commit blobs; run-owned Myers comparisons do not execute repository clean filters, text conversion, external diffs, fsmonitor hooks, or Git hooks.
+- A real WSL-to-Windows working-tree run scanned 2,161 added lines across 41 source files with complete coverage, no findings, and unchanged source.
+- The canonical public URI installed from an authenticated profile where inspection proved local state absent, then completed all eight stages and returned the expected deterministic demo result.
+- The human Play page, machine-readable contract, public GitHub source, exact source tag, and GitHub release all open publicly.
+- Two adversarial review rounds completed. The discovered rescan race, repository clean-filter execution, Python floor-division masking, raw-path rendering, unstable failure schema, rename comparison, and package/documentation defects were repaired and retested before publication.
+
+`invisible-diff@0.1.0` is immutable. Do not republish it. A future version requires observed user friction or a concrete correctness defect.
+
+## Submission and Adoption Status
+
+- **Both submissions are complete.** The current event page says, "Publishing is submitting." There is no separate form, deck, or upload; each entry condition is a public Play that opens and runs through Rote.
+- **Event registration is complete.** The entrant confirmed registration on Luma. This account state is not publicly inspectable.
+- **Warm-up signal is complete.** The entrant confirmed posting the exact `warmed up` message in the Modiqo Discord. Discord message state is not publicly inspectable from this record.
+- **Both public entries are live.** `karan68/claim-trial@0.1.0` and `karan68/invisible-diff@0.1.0` are publicly inspectable and runnable. Each had one registry download observed on 2026-09-02; these include our canonical smoke runs.
+- **Feedback funnel is live.** GitHub issue [#1](https://github.com/karan68/claim-trial/issues/1) asks for a genuine five-minute run, environment details, first-run clarity, and the largest confusion point.
+- **Discord outreach is posted.** The entrant confirmed posting the tester request in the Modiqo event server. Discord message state is not publicly inspectable from this record.
+- **No third-party adoption is claimed yet.** The Claim Trial feedback issue currently has zero comments, and the observed registry downloads are not proven to belong to other participants.
+
+Do not publish another version merely to create activity. Monitor the feedback issue and registry count, answer genuine tester questions, and change the Play only when observed friction justifies an immutable version bump.
 
 ## Why the Previous Decision Changed
 
