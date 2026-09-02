@@ -7,14 +7,14 @@
  * @rote-frontmatter
  * ---
  * name: claim-trial
- * description: "Tests one technical claim at an exact local Git revision. Runs a baseline and hostile probe in separate disposable worktrees, returns SUPPORTED, DISPROVEN, or INCONCLUSIVE with bounded evidence, and verifies the source checkout stayed unchanged. Run with no arguments for the bundled cancellation-lock demonstration."
+ * description: Tests one technical claim at an exact local Git revision. Runs a baseline and hostile probe in separate disposable worktrees, returns SUPPORTED, DISPROVEN, or INCONCLUSIVE with bounded evidence, and verifies the source checkout stayed unchanged. Run with no arguments for the bundled cancellation-lock demonstration.
  * source: https://github.com/karan68/claim-trial
  * provenance:
  *   author: Karan Yadav <mekaranyadav8@gmail.com>
  * metadata:
  *   version: 0.1.0
- *   rote_version: "0.78.0"
- *   status: draft
+ *   rote_version: 0.78.0
+ *   status: released
  *   kind: atomic
  *   flow_type: parallel
  *   execution_model: steps_with_presentation
@@ -41,37 +41,37 @@
  *   param_type: string
  *   required: false
  *   default: demo
- *   description: "demo runs the bundled inherited-lock counterexample; custom tests your repository"
+ *   description: demo runs the bundled inherited-lock counterexample; custom tests your repository
  * - name: repo_path
  *   param_type: string
  *   required: false
- *   default: ""
- *   description: "Absolute local Git repository path; required only in custom mode"
+ *   default: ''
+ *   description: Absolute local Git repository path; required only in custom mode
  * - name: ref
  *   param_type: string
  *   required: false
  *   default: HEAD
- *   description: "Local Git commit, tag, or branch resolved to one exact commit"
+ *   description: Local Git commit, tag, or branch resolved to one exact commit
  * - name: claim
  *   param_type: string
  *   required: false
- *   default: "Cancellation releases the operation lock."
- *   description: "Bounded positive claim tested by the hostile probe"
+ *   default: Cancellation releases the operation lock.
+ *   description: Bounded positive claim tested by the hostile probe
  * - name: baseline_command
  *   param_type: string
  *   required: false
- *   default: ""
- *   description: "Trusted non-interactive shell command for custom mode; final stdout line must follow the probe protocol"
+ *   default: ''
+ *   description: Trusted non-interactive shell command for custom mode; final stdout line must follow the probe protocol
  * - name: hostile_command
  *   param_type: string
  *   required: false
- *   default: ""
- *   description: "Trusted non-interactive hostile probe for custom mode; final stdout line must follow the probe protocol"
+ *   default: ''
+ *   description: Trusted non-interactive hostile probe for custom mode; final stdout line must follow the probe protocol
  * - name: timeout_seconds
  *   param_type: integer
  *   required: false
- *   default: "10"
- *   description: "Per-probe timeout from 1 through 120 seconds"
+ *   default: '10'
+ *   description: Per-probe timeout from 1 through 120 seconds
  * presentation_fixtures:
  *   prepare_target: resources/presentation-fixtures/prepare_target/fixture.yaml
  *   baseline_probe: resources/presentation-fixtures/baseline_probe/fixture.yaml
@@ -86,7 +86,7 @@
  *     timeout_ms: 10000
  *     argv:
  *     - python3
- *     - "@resource{claim_trial.py}"
+ *     - '@resource{claim_trial.py}'
  *     - prepare
  *     - --
  *     - $mode
@@ -96,90 +96,102 @@
  *     - $baseline_command
  *     - $hostile_command
  *     - $timeout_seconds
- *     - "@resource{demo/fixture.py}"
+ *     - '@resource{demo/fixture.py}'
  *   baseline_probe:
  *     type: process.exec
  *     timeout_ms: 125000
- *     depends_on: [prepare_target]
+ *     depends_on:
+ *     - prepare_target
  *     argv:
  *     - python3
- *     - "@resource{claim_trial.py}"
+ *     - '@resource{claim_trial.py}'
  *     - run-probe
  *     - --
  *     - baseline
- *     - "@prepare_target{.stdout.text | fromjson | .mode}"
- *     - "@prepare_target{.stdout.text | fromjson | .demo_source}"
- *     - "@prepare_target{.stdout.text | fromjson | .repo_root}"
- *     - "@prepare_target{.stdout.text | fromjson | .tested_commit}"
- *     - "@prepare_target{.stdout.text | fromjson | .baseline_command}"
- *     - "@prepare_target{.stdout.text | fromjson | .timeout_seconds}"
+ *     - '@prepare_target{.stdout.text | fromjson | .mode}'
+ *     - '@prepare_target{.stdout.text | fromjson | .demo_source}'
+ *     - '@prepare_target{.stdout.text | fromjson | .repo_root}'
+ *     - '@prepare_target{.stdout.text | fromjson | .tested_commit}'
+ *     - '@prepare_target{.stdout.text | fromjson | .baseline_command}'
+ *     - '@prepare_target{.stdout.text | fromjson | .timeout_seconds}'
  *   hostile_probe:
  *     type: process.exec
  *     timeout_ms: 125000
- *     depends_on: [prepare_target]
+ *     depends_on:
+ *     - prepare_target
  *     argv:
  *     - python3
- *     - "@resource{claim_trial.py}"
+ *     - '@resource{claim_trial.py}'
  *     - run-probe
  *     - --
  *     - hostile
- *     - "@prepare_target{.stdout.text | fromjson | .mode}"
- *     - "@prepare_target{.stdout.text | fromjson | .demo_source}"
- *     - "@prepare_target{.stdout.text | fromjson | .repo_root}"
- *     - "@prepare_target{.stdout.text | fromjson | .tested_commit}"
- *     - "@prepare_target{.stdout.text | fromjson | .hostile_command}"
- *     - "@prepare_target{.stdout.text | fromjson | .timeout_seconds}"
+ *     - '@prepare_target{.stdout.text | fromjson | .mode}'
+ *     - '@prepare_target{.stdout.text | fromjson | .demo_source}'
+ *     - '@prepare_target{.stdout.text | fromjson | .repo_root}'
+ *     - '@prepare_target{.stdout.text | fromjson | .tested_commit}'
+ *     - '@prepare_target{.stdout.text | fromjson | .hostile_command}'
+ *     - '@prepare_target{.stdout.text | fromjson | .timeout_seconds}'
  *   adjudicate_claim:
  *     type: process.exec
  *     timeout_ms: 10000
- *     depends_on: [baseline_probe, hostile_probe]
+ *     depends_on:
+ *     - baseline_probe
+ *     - hostile_probe
  *     argv:
  *     - python3
- *     - "@resource{claim_trial.py}"
+ *     - '@resource{claim_trial.py}'
  *     - adjudicate
  *     - --
  *     - $claim
- *     - "@baseline_probe{.stdout.text}"
- *     - "@hostile_probe{.stdout.text}"
+ *     - '@baseline_probe{.stdout.text}'
+ *     - '@hostile_probe{.stdout.text}'
  *   verify_source:
  *     type: process.exec
  *     timeout_ms: 10000
- *     depends_on: [prepare_target, baseline_probe, hostile_probe]
+ *     depends_on:
+ *     - prepare_target
+ *     - baseline_probe
+ *     - hostile_probe
  *     argv:
  *     - python3
- *     - "@resource{claim_trial.py}"
+ *     - '@resource{claim_trial.py}'
  *     - verify-source
  *     - --
- *     - "@prepare_target{.stdout.text | fromjson | .mode}"
- *     - "@prepare_target{.stdout.text | fromjson | .demo_source}"
- *     - "@prepare_target{.stdout.text | fromjson | .repo_root}"
- *     - "@prepare_target{.stdout.text | fromjson | .source_head}"
- *     - "@prepare_target{.stdout.text | fromjson | .source_status_sha256}"
- *     - "@prepare_target{.stdout.text | fromjson | .source_refs_sha256}"
- *     - "@prepare_target{.stdout.text | fromjson | .source_config_sha256}"
- *     - "@prepare_target{.stdout.text | fromjson | .source_worktrees_sha256}"
+ *     - '@prepare_target{.stdout.text | fromjson | .mode}'
+ *     - '@prepare_target{.stdout.text | fromjson | .demo_source}'
+ *     - '@prepare_target{.stdout.text | fromjson | .repo_root}'
+ *     - '@prepare_target{.stdout.text | fromjson | .source_head}'
+ *     - '@prepare_target{.stdout.text | fromjson | .source_status_sha256}'
+ *     - '@prepare_target{.stdout.text | fromjson | .source_refs_sha256}'
+ *     - '@prepare_target{.stdout.text | fromjson | .source_config_sha256}'
+ *     - '@prepare_target{.stdout.text | fromjson | .source_worktrees_sha256}'
  *   finalize_trial:
  *     type: process.exec
  *     timeout_ms: 10000
- *     depends_on: [prepare_target, adjudicate_claim, verify_source]
+ *     depends_on:
+ *     - prepare_target
+ *     - adjudicate_claim
+ *     - verify_source
  *     argv:
  *     - python3
- *     - "@resource{claim_trial.py}"
+ *     - '@resource{claim_trial.py}'
  *     - finalize
  *     - --
- *     - "@prepare_target{.stdout.text}"
- *     - "@adjudicate_claim{.stdout.text}"
- *     - "@verify_source{.stdout.text}"
+ *     - '@prepare_target{.stdout.text}'
+ *     - '@adjudicate_claim{.stdout.text}'
+ *     - '@verify_source{.stdout.text}'
  *   cleanup_target:
  *     type: process.exec
  *     timeout_ms: 10000
- *     depends_on: [prepare_target, finalize_trial]
+ *     depends_on:
+ *     - prepare_target
+ *     - finalize_trial
  *     argv:
  *     - python3
- *     - "@resource{claim_trial.py}"
+ *     - '@resource{claim_trial.py}'
  *     - cleanup
  *     - --
- *     - "@prepare_target{.stdout.text}"
+ *     - '@prepare_target{.stdout.text}'
  * ---
  */
 
