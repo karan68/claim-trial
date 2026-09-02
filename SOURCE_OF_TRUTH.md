@@ -1,6 +1,6 @@
 # Rote Playoffs: Source of Truth
 
-**Status:** Strategy locked for implementation
+**Status:** `claim-trial@0.1.0` published and canonical smoke verified
 **Last verified:** 2026-09-02
 **Event window:** September 1-6, 2026
 **Submission deadline:** September 6, 2026 at 20:00 London / 19:00 UTC / September 7 at 00:30 IST
@@ -18,6 +18,30 @@ Build and submit **`claim-trial`** first.
 It is the strongest choice because it captures work the entrant demonstrably performs repeatedly: convert broad technical claims into falsifiable hypotheses, find the controlling code path, run the cheapest discriminating experiment against an exact revision, and preserve the evidence and residual uncertainty.
 
 No one can be 100% certain of winning a judged contest. Adoption, competing entries, and judges are outside our control. We are, however, sufficiently certain that `claim-trial` is the best current decision under the verified rules and live field. Do not reopen the flagship choice without new evidence that trips a kill criterion in this document.
+
+## Published Outcome
+
+- **Public Play:** https://play.modiqo.ai/karan68/claim-trial@0.1.0
+- **Public source:** https://github.com/karan68/claim-trial
+- **Source head:** `486908529e20b0f50e418f3614d7f8f632958d34`
+- **Captured exploration:** `cap_Al0udtXDu754TF3fCVlGbrek`
+- **Captured trajectory:** `sha256:949ea5115148f5c0dfac1f6d38c069cbc0a24b7fcf5011082f0820f459713c2c`
+- **Registry archive digest:** `sha256:d74533b279ae9afdeccdd2d91f35b95af95ad5ccc45211b27092808a4bdeb988`
+- **Installed package digest:** `installed-package-sha256-v1:e3f13ec08df9cd8dd47d07f060a01c5d80c5786d571a3aa99643ada201005277`
+
+Verified release gates:
+
+- 17 focused engine and integration tests pass.
+- Dependency preflight passes for Python, Git, and POSIX `sh`.
+- Rote validation passes with quality score `0.88`.
+- Rote presentation lint passes with complete fixture coverage and no findings.
+- Public inspection reports `play_run_eligible: true`, public visibility, no blockers, no adapters, and no credentials.
+- Canonical public URI installed from an absent local state and returned `DISPROVEN`, an exact deterministic demo commit, Git-visible source unchanged, and cleanup complete.
+- Final 20-run stress: 20 `DISPROVEN`, zero failures, one deterministic commit, zero temporary directories, and zero leaked processes.
+- Custom-mode run preserved source HEAD and status; invalid refs fail closed; timeout and malformed evidence return `INCONCLUSIVE`; output is capped at 1 MiB per stream.
+- Two adversarial implementation reviews completed; the second found no ship-blocking defect, and its remaining parallel-custom test gap was added and passed.
+
+The public page states that the pinned Play can be resolved and run by anyone. Community registry commands are not shipped in the current CLI, so the event entry uses the available public `karan68` namespace, consistent with other live user-owned entries.
 
 ## Why the Previous Decision Changed
 
@@ -522,4 +546,4 @@ After one definitive expensive failure, stop and identify the root cause. Do not
 
 ## Next Action
 
-Open WSL2, complete the Play warm-up, start journey capture, and perform one authentic cancellation/lock claim investigation. The next artifact should be a captured successful run, not another strategy document.
+Do not change immutable version `0.1.0`. Ask real participants to inspect and run the zero-argument public URI, record only genuine adoption feedback, and prepare `0.1.1` only for a concrete defect or major comprehension failure. The remaining contest work is adoption and observation, not more architecture.
