@@ -73,8 +73,9 @@ Verified release gates:
 - **Event registration is complete.** The entrant confirmed registration on Luma. This account state is not publicly inspectable.
 - **Warm-up signal is complete.** The entrant confirmed posting the exact `warmed up` message in the Modiqo Discord. Discord message state is not publicly inspectable from this record.
 - **Both public entries are live.** `karan68/claim-trial@0.1.0` and `karan68/invisible-diff@0.1.0` are publicly inspectable and runnable. Each had one registry download observed on 2026-09-02; these include our canonical smoke runs.
-- **Feedback funnel is live.** GitHub issue [#1](https://github.com/karan68/claim-trial/issues/1) asks for a genuine five-minute run, environment details, first-run clarity, and the largest confusion point.
-- **Discord outreach is posted.** The entrant confirmed posting the tester request in the Modiqo event server. Discord message state is not publicly inspectable from this record.
+- **Both feedback funnels are live.** Claim Trial issue [#1](https://github.com/karan68/claim-trial/issues/1) and Invisible Diff issue [#1](https://github.com/karan68/invisible-diff/issues/1) ask for genuine five-minute runs, environment details, first-run clarity, and concrete defects or confusion.
+- **Claim Trial Discord outreach is posted.** The entrant confirmed posting its tester request in the Modiqo event server. Discord message state is not publicly inspectable from this record.
+- **Invisible Diff Discord outreach is pending.** The exact launch copy is prepared, but the integrated browser did not expose an authenticated Discord channel and the entrant could not post it during this session. Do not claim otherwise.
 - **No third-party adoption is claimed yet.** The Claim Trial feedback issue currently has zero comments, and the observed registry downloads are not proven to belong to other participants.
 
 Do not publish another version merely to create activity. Monitor the feedback issue and registry count, answer genuine tester questions, and change the Play only when observed friction justifies an immutable version bump.
